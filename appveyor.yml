@@ -3,8 +3,8 @@ environment:
     REPO_DIR: biopython
     PACKAGE_NAME: biopython
     BUILD_COMMIT: biopython-170
-    BUILD_DEPENDS: "numpy==1.8.0"
-    TEST_DEPENDS: "numpy==1.8.0"
+    BUILD_DEPENDS: "numpy==1.9.0"
+    TEST_DEPENDS: "numpy==1.9.0"
     WHEELHOUSE_UPLOADER_USERNAME: travis-worker
     WHEELHOUSE_UPLOADER_SECRET:
         secure:
