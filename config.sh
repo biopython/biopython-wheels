@@ -11,7 +11,7 @@ function run_tests {
     # Runs tests on installed distribution from an empty directory
     python --version
     # Debugging check for potential openssl issue in this Python
-    python -c "import hashlib; print(hashlib.algorithms)"
+    python -c "import hashlib; print(sorted(x for x in dir(hashlib) if not x.startswith('_')))"
     # Check the simplest import, and version for consistency
     python -c "import Bio; print('Biopython version ' + Bio.__version__)"
     # This will confirm some of our C code compiled fine:
