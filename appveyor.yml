@@ -92,6 +92,9 @@ artifacts:
     - path: "%REPO_DIR%\\dist\\*"
 
 on_success:
+  # Report checksums
+  - md5sum %REPO_DIR%\\dist\\%PACKAGE_NAME%*
+  - sha256sum %REPO_DIR%\\dist\\%PACKAGE_NAME%*
   # Upload the generated wheel package to Rackspace
   # On Windows, Apache Libcloud cannot find a standard CA cert bundle so we
   # disable the ssl checks.
