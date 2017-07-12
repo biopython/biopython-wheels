@@ -102,11 +102,11 @@ test_script:
     - "%CMD_IN_ENV% python -c \"from Bio.Nexus import cnexus; from Bio import cpairwise2\""
     - "%CMD_IN_ENV% python -c \"from Bio import Cluster; print('Bio.Cluster version ' + Cluster.version())\""
     # Now let's run our full test suite...
-    # Disable tutorial doctest which breaks under 32-bit Python 3.5
-    - rm %REPO_DIR%\\Docs\\Tutorial\\chapter_phenotype.tex
     - cd %REPO_DIR%\\Tests
     # Disable doctest which breaks under 64-bit Python 2.7
     - "sed -i.tmp 's:\"Bio.Affy.CelFile\",:# Skip Bio.Affy.CelFile:g' run_tests.py"
+    # Disable tutorial doctest which breaks under 32-bit Python 3.5
+    - rm ..\\Doc\\Tutorial\\chapter_phenotype.tex
     - "%CMD_IN_ENV% python run_tests.py --offline"
     - cd ..\\..
 
