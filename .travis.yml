@@ -130,9 +130,9 @@ script:
     - install_run $PLAT
 
 after_success:
-    # Report checksums
-    - md5sum ${TRAVIS_BUILD_DIR}/wheelhouse/${REPO_DIR}*
-    - sha256sum ${TRAVIS_BUILD_DIR}/wheelhouse/${REPO_DIR}*
+    # Report checksums (needs to work on Linux and Mac OS X)
+    # - md5sum ${TRAVIS_BUILD_DIR}/wheelhouse/${REPO_DIR}*
+    # - sha256sum ${TRAVIS_BUILD_DIR}/wheelhouse/${REPO_DIR}*
     # Upload wheels to Rackspace container
     - pip install wheelhouse-uploader
     # This uploads the wheels to a Rackspace container owned by the
