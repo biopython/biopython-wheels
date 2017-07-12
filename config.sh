@@ -10,6 +10,9 @@ function pre_build {
 function run_tests {
     # To help with debug any unicode issues
     locale
+    echo "Switching to LANG=en_US.utf8"
+    export LANG=en_US.utf8
+    locale
     # Runs tests on installed distribution from an empty directory
     python --version
     # Debugging check for potential openssl issue in this Python
