@@ -17,5 +17,8 @@ function run_tests {
     # This will confirm some of our C code compiled fine:
     python -c "from Bio.Nexus import cnexus; from Bio import cpairwise2"
     python -c "from Bio import Cluster; print('Bio.Cluster version ' + Cluster.version())"
-    # TODO - Run our test suite...
+    # So far so good, now let's run our full test suite...
+    cd Tests
+    python run_tests.py --offline
+    cd ..
 }
