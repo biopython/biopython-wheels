@@ -114,7 +114,7 @@ matrix:
         # PyPy 5.8 and NumPy 1.13.0 are a known good combination:
         - BUILD_DEPENDS="numpy=1.13.0"
         - TEST_DEPENDS="numpy=1.8.0"
-        - MB_PYTHON_VERSION=pypy-5.8
+        - MB_PYTHON_VERSION=pypy-5.8.0
 
 before_install:
     - source multibuild/common_utils.sh
