@@ -18,10 +18,8 @@ function run_tests {
     python -c "from Bio.Nexus import cnexus; from Bio import cpairwise2"
     python -c "from Bio import Cluster; print('Bio.Cluster version ' + Cluster.version())"
     # So far so good, now let's run our full test suite...
-    pwd
-    cd ${TRAVIS_BUILD_DIR}/biopython/Tests
+    cd ${REPO_DIR}/biopython/Tests
     python run_tests.py --offline
-    # Attempt to put us back...
-    cd -
+    cd /io/tmp_for_test
     pwd
 }
