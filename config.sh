@@ -20,8 +20,17 @@ function run_tests {
     python -c "from Bio.Nexus import cnexus; from Bio import cpairwise2"
     python -c "from Bio import Cluster; print('Bio.Cluster version ' + Cluster.version())"
     # So far so good, now let's run our full test suite...
-    cd /io/biopython/Tests
+    pwd
+    if [ -n "$IS_OSX" ]; then
+        cd ${TRAVIS_BUILD_DIR}/biopython/Tests
+    else
+        cd /io/biopython/Tests
+    fi
     python run_tests.py --offline
-    cd /io/tmp_for_test
+    if [ -n "$IS_OSX" ]; then
+	cd ${TRAVIS_BUILD_DIR}
+    else
+	cd /io/
+    fi
     pwd
 }
