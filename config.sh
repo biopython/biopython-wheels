@@ -13,11 +13,12 @@ function run_tests {
     locale
     python -c "import sys; print(sys.version); print('Default encoding: ' + sys.getdefaultencoding())"
     python -c "import locale; print('Locale prefered encoding: ' + locale.getpreferredencoding())"
+    echo "Contents of /etc/default/locale are:"
+    cat /etc/default/locale
     echo "Switching to LANG=en_US.utf8 etc"
-    export LC_CTYPE="en_US.UTF-8"
-    export LC_ALL="en_US.UTF-8"
-    export LANG="en_US.UTF-8"
+    sudo locale-gen en_US.UTF-8
     sudo dpkg-reconfigure locales
+    export LANG="en_US.UTF-8"
     locale
     python -c "import sys; print(sys.version); print('Default encoding: ' + sys.getdefaultencoding())"
     python -c "import locale; print('Locale prefered encoding: ' + locale.getpreferredencoding())"
