@@ -102,7 +102,11 @@ test_script:
     - "%CMD_IN_ENV% python -c \"from Bio.Nexus import cnexus; from Bio import cpairwise2\""
     - "%CMD_IN_ENV% python -c \"from Bio import Cluster; print('Bio.Cluster version ' + Cluster.version())\""
     # Now let's run our full test suite...
-    - cd %REPO_DIR%\\Tests
+    # We want to do this using the Biopython installed from the wheel,
+    # so just want the Tests (and Doc) folders present here:
+    - mklink %REPO_DIR%\\Tests Tests
+    - mklink %REPO_DIR%\\Doc Doc
+    - cd Tests
     # Disable doctest which breaks under 64-bit Python 2.7
     - "sed -i.tmp 's:\"Bio.Affy.CelFile\",:# Skip Bio.Affy.CelFile:g' run_tests.py"
     # Disable int vs long tutorial doctest which breaks under 32-bit Python 3.5
@@ -111,7 +115,7 @@ test_script:
     - "sed -i.tmp 's#def test_WellRecord#def no_test_WellRecord#g' test_phenotype.py"
     - "sed -i.tmp 's#def test_phenotype_IO#def no_test_phenotype_IO#g' test_phenotype.py"
     - "%CMD_IN_ENV% python run_tests.py --offline"
-    - cd ..\\..
+    - cd ..
 
 artifacts:
     - path: "%REPO_DIR%\\dist\\*"
