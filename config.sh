@@ -9,11 +9,13 @@ function pre_build {
 
 function run_tests {
     # To help with debug any unicode issues
-    python -c "import sys; print(sys.version); print(sys.getdefaultencoding())"
+    python -c "import sys; print(sys.version); print('Default encoding' + sys.getdefaultencoding())"
+    python -c "import locale; print('Locale prefered encoding: ' + locale.getpreferredencoding())"
     locale
     echo "Switching to LANG=en_US.utf8"
     export LANG=en_US.utf8
-    python -c "import sys; print(sys.version); print(sys.getdefaultencoding())"
+    python -c "import sys; print(sys.version); print('Default encoding' + sys.getdefaultencoding())"
+    python -c "import locale; print('Locale prefered encoding: ' + locale.getpreferredencoding())"
     locale
     # Runs tests on installed distribution from an empty directory
     python --version
