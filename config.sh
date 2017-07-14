@@ -13,9 +13,9 @@ function run_tests {
     locale
     python -c "import sys; print(sys.version); print('Default encoding: ' + sys.getdefaultencoding())"
     python -c "import locale; print('Locale prefered encoding: ' + locale.getpreferredencoding())"
-    echo "Contents of /etc/default/locale are:"
-    cat /etc/default/locale
     echo "Switching to LANG=en_US.utf8 etc"
+    # Seems there is no /etc/default/locale file...
+    sudo echo "LANG=en_US.UTF-8" > /etc/default/locale
     sudo locale-gen en_US.UTF-8
     sudo dpkg-reconfigure locales
     export LANG="en_US.UTF-8"
