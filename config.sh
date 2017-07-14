@@ -9,14 +9,18 @@ function pre_build {
 
 function run_tests {
     # To help with debug any unicode issues
-    python -c "import sys; print(sys.version); print('Default encoding' + sys.getdefaultencoding())"
-    python -c "import locale; print('Locale prefered encoding: ' + locale.getpreferredencoding())"
+    echo "Before trying to change locale..."
     locale
-    echo "Switching to LANG=en_US.utf8"
-    export LANG=en_US.utf8
-    python -c "import sys; print(sys.version); print('Default encoding' + sys.getdefaultencoding())"
+    python -c "import sys; print(sys.version); print('Default encoding: ' + sys.getdefaultencoding())"
     python -c "import locale; print('Locale prefered encoding: ' + locale.getpreferredencoding())"
+    echo "Switching to LANG=en_US.utf8 etc"
+    export LC_CTYPE="en_US.UTF-8"
+    export LC_ALL="en_US.UTF-8"
+    export LANG="en_US.UTF-8"
+    sudo dpkg-reconfigure locales
     locale
+    python -c "import sys; print(sys.version); print('Default encoding: ' + sys.getdefaultencoding())"
+    python -c "import locale; print('Locale prefered encoding: ' + locale.getpreferredencoding())"
     # Runs tests on installed distribution from an empty directory
     python --version
     # Debugging check for potential openssl issue in this Python
