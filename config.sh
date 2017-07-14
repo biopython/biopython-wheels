@@ -9,7 +9,11 @@ function pre_build {
 
 function run_tests {
     echo "Forcing en_US.UTF-8 as workaround for encoding issues in Biopython 1.70 tests"
-    sudo update-locale LANG=en_US.UTF-8
+    # There is likely a more consise method to do this, but this works:
+    sudo echo "LANG=en_US.UTF-8" > /etc/default/locale
+    sudo locale-gen en_US.UTF-8
+    sudo dpkg-reconfigure locales
+    export LANG="en_US.UTF-8"
     locale
     python -c "import sys; print(sys.version); print('Default encoding: ' + sys.getdefaultencoding())"
     python -c "import locale; print('Locale prefered encoding: ' + locale.getpreferredencoding())"
