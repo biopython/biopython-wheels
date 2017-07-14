@@ -104,8 +104,8 @@ test_script:
     # Now let's run our full test suite...
     # We want to do this using the Biopython installed from the wheel,
     # so just want the Tests (and Doc) folders present here:
-    - mklink %REPO_DIR%\\Tests Tests
-    - mklink %REPO_DIR%\\Doc Doc
+    - mv %REPO_DIR%\\Tests Tests
+    - mv %REPO_DIR%\\Doc Doc
     - cd Tests
     # Disable doctest which breaks under 64-bit Python 2.7
     - "sed -i.tmp 's:\"Bio.Affy.CelFile\",:# Skip Bio.Affy.CelFile:g' run_tests.py"
