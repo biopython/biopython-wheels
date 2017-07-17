@@ -6,7 +6,7 @@ environment:
     WHEELHOUSE_UPLOADER_USERNAME: travis-worker
     WHEELHOUSE_UPLOADER_SECRET:
         secure:
-            ENCRYPTED-WHEELHOUSE-UPLOADER-SECRET-PENDING
+            rGyl1dSDGB0VGdWO6GVnSRDfbsXxqENaRXRWFjRI91hOQVbgcmYphSQ+wNBzO1LB
 
     # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
     # /E:ON and /V:ON options are not enabled in the batch script intepreter
