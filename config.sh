@@ -24,24 +24,19 @@ function run_tests {
     # Runs tests on installed distribution from an empty directory
     python --version
     # Check the simplest import, and version for consistency
-    python -c "import Bio; print('Biopython version ' + Bio.__version__)"
+    python -c "import Bio; print('Biopython version: ' + Bio.__version__)"
     # This will confirm some of our C code compiled fine:
     python -c "from Bio.Nexus import cnexus; from Bio import cpairwise2"
-    python -c "from Bio import Cluster; print('Bio.Cluster version ' + Cluster.version())"
+    python -c "from Bio import Cluster; print('Bio.Cluster version: ' + Cluster.version())"
     # So far so good, now let's run our full test suite...
-    if [ -n "$IS_OSX" ]; then
-        cd ${TRAVIS_BUILD_DIR}/biopython/Tests
-    else
-        cd /io/biopython/Tests
-    fi
+    # We want to do this using the Biopython installed from the wheel,
+    # so just want the Tests (and Doc) folders present here:
+    ln -s ../biopython/Tests Tests
+    ln -s ../biopython/Doc Doc
+    cd Tests
     # Disable some platform specific failures in Biopython 1.70
     rm ../Doc/Tutorial/chapter_phenotype.tex
     sed -i.tmp 's#def test_WellRecord#def no_test_WellRecord#g' test_phenotype.py
     sed -i.tmp 's#def test_phenotype_IO#def no_test_phenotype_IO#g' test_phenotype.py
     python run_tests.py --offline
-    if [ -n "$IS_OSX" ]; then
-	cd ${TRAVIS_BUILD_DIR}
-    else
-	cd /io/
-    fi
 }
