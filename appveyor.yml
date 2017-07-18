@@ -84,7 +84,10 @@ build_script:
     # build wheel:
     - cd %REPO_DIR%
     - git checkout %BUILD_COMMIT%
+    - "%CMD_IN_ENV% python setup.py bdist_wininst"
+    - "%CMD_IN_ENV% python setup.py bdist_msi"
     - "%CMD_IN_ENV% python setup.py bdist_wheel"
+    - ls dist/
 
 test_script:
     # create test env
