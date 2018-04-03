@@ -78,8 +78,6 @@ build_script:
     # build wheel:
     - cd %REPO_DIR%
     - git checkout %BUILD_COMMIT%
-    - python setup.py bdist_wininst
-    - python setup.py bdist_msi
     - python setup.py bdist_wheel
     - ls dist/
 
