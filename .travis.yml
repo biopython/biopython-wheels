@@ -2,7 +2,7 @@ env:
     global:
         - REPO_DIR=biopython
         # Commit from your-project that you want to build
-        - BUILD_COMMIT=biopython-170
+        - BUILD_COMMIT=biopython-171
         - PLAT=x86_64
         - UNICODE_WIDTH=32
         - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
