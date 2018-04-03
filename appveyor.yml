@@ -8,11 +8,6 @@ environment:
         secure:
             rGyl1dSDGB0VGdWO6GVnSRDfbsXxqENaRXRWFjRI91hOQVbgcmYphSQ+wNBzO1LB
 
-    # SDK v7.0 MSVC Express 2008's SetEnv.cmd script will fail if the
-    # /E:ON and /V:ON options are not enabled in the batch script intepreter
-    # See: http://stackoverflow.com/a/13751649/163740
-    CMD_IN_ENV: "cmd /E:ON /V:ON /C %APPVEYOR_BUILD_FOLDER%\\multibuild\\ci\\appveyor\\windows_sdk.cmd"
-
   matrix:
     - PYTHON: "C:\\Miniconda"
       PYTHON_VERSION: "2.7"
@@ -69,7 +64,6 @@ install:
     - git submodule update --init --recursive
 
     # Install miniconda
-    - ps: .\\multibuild\\ci\\appveyor\\install.ps1
     - SET PATH=%PYTHON%;%PYTHON%\Scripts;%PYTHON%\Library\bin;%PATH%
     - conda info
 
@@ -84,9 +78,9 @@ build_script:
     # build wheel:
     - cd %REPO_DIR%
     - git checkout %BUILD_COMMIT%
-    - "%CMD_IN_ENV% python setup.py bdist_wininst"
-    - "%CMD_IN_ENV% python setup.py bdist_msi"
-    - "%CMD_IN_ENV% python setup.py bdist_wheel"
+    - python setup.py bdist_wininst
+    - python setup.py bdist_msi
+    - python setup.py bdist_wheel
     - ls dist/
 
 test_script:
@@ -100,10 +94,10 @@ test_script:
     # run test from installed wheel.
     - cd ..
     # The test try to run cython/msvc so CMD_IN_ENV is needed
-    - "%CMD_IN_ENV% python -c \"import Bio; print('Biopython version ' + Bio.__version__)\""
+    - "python -c \"import Bio; print('Biopython version ' + Bio.__version__)\""
     # This will confirm some of our C code compiled fine:
-    - "%CMD_IN_ENV% python -c \"from Bio.Nexus import cnexus; from Bio import cpairwise2\""
-    - "%CMD_IN_ENV% python -c \"from Bio import Cluster; print('Bio.Cluster version ' + Cluster.version())\""
+    - "python -c \"from Bio.Nexus import cnexus; from Bio import cpairwise2\""
+    - "python -c \"from Bio import Cluster; print('Bio.Cluster version ' + Cluster.version())\""
     # Now let's run our full test suite...
     # We want to do this using the Biopython installed from the wheel,
     # so just want the Tests (and Doc) folders present here:
@@ -117,7 +111,7 @@ test_script:
     # Disable two more platform specific failures
     - "sed -i.tmp 's#def test_WellRecord#def no_test_WellRecord#g' test_phenotype.py"
     - "sed -i.tmp 's#def test_phenotype_IO#def no_test_phenotype_IO#g' test_phenotype.py"
-    - "%CMD_IN_ENV% python run_tests.py --offline"
+    - "python run_tests.py --offline"
     - cd ..
 
 artifacts:
