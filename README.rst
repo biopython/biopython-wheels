@@ -16,3 +16,9 @@ for Linux and Apple Mac OS X, and AppVeyor for Microsoft Windows.
 
 - https://travis-ci.org/biopython/biopython-wheels/builds
 - https://ci.appveyor.com/project/biopython/biopython-wheels/history
+
+The compiled wheel files are uploaded to a staging folder hosted
+on RackSpace, from where we download them and then upload them
+to PyPI as part of making a Biopython release.
+
+- http://biopython.org/wiki/Building_a_release
