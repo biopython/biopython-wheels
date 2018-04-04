@@ -68,6 +68,7 @@ install:
     - conda info
 
     # Update pip
+    - python -m ensurepip
     - python -m pip install --upgrade pip
 
     # Check that we have the expected version and architecture for Python
