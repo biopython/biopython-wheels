@@ -95,7 +95,6 @@ test_script:
 
     # run test from installed wheel.
     - cd ..
-    # The test try to run cython/msvc so CMD_IN_ENV is needed
     - "python -c \"import Bio; print('Biopython version ' + Bio.__version__)\""
     # This will confirm some of our C code compiled fine:
     - "python -c \"from Bio.Nexus import cnexus; from Bio import cpairwise2\""
