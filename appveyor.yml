@@ -82,6 +82,7 @@ build_script:
     # build wheel:
     - cd %REPO_DIR%
     - git checkout %BUILD_COMMIT%
+    - SET DISTUTILS_DEBUG=1
     - python setup.py bdist_wheel
     - ls dist/
 
