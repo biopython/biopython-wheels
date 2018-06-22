@@ -23,6 +23,11 @@ function run_tests {
     python -c "import locale; print('Locale prefered encoding: ' + locale.getpreferredencoding())"
     # Runs tests on installed distribution from an empty directory
     python --version
+    # We want to do this using the Biopython installed from the wheel,
+    # so just want the Tests (and Doc) folders present here:
+    ln -s ../biopython/Tests Tests
+    ln -s ../biopython/Doc Doc
+    cd Tests
     # Check the simplest import, and version for consistency
     python -c "import Bio; print('Biopython version: ' + Bio.__version__)"
     # This will confirm some of our C code compiled fine:
@@ -30,11 +35,6 @@ function run_tests {
     python -c "from Bio import Cluster; print('Bio.Cluster version: ' + Cluster.__version__)"
     python -c "from Bio.Align import _aligners"
     # So far so good, now let's run our full test suite...
-    # We want to do this using the Biopython installed from the wheel,
-    # so just want the Tests (and Doc) folders present here:
-    ln -s ../biopython/Tests Tests
-    ln -s ../biopython/Doc Doc
-    cd Tests
     # Disable some platform specific failures in Biopython 1.70
     rm ../Doc/Tutorial/chapter_phenotype.tex
     sed -i.tmp 's#def test_WellRecord#def no_test_WellRecord#g' test_phenotype.py
