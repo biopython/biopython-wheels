@@ -73,7 +73,7 @@ install:
 
 build_script:
     # Install build requirements
-    - conda install --yes %BUILD_DEPENDS%
+    # - conda install --yes %BUILD_DEPENDS%
 
     # build wheel:
     - cd %REPO_DIR%
