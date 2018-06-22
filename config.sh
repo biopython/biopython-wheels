@@ -28,6 +28,7 @@ function run_tests {
     # This will confirm some of our C code compiled fine:
     python -c "from Bio.Nexus import cnexus; from Bio import cpairwise2"
     python -c "from Bio import Cluster; print('Bio.Cluster version: ' + Cluster.__version__)"
+    python -c "from Bio.Align import _aligners"
     # So far so good, now let's run our full test suite...
     # We want to do this using the Biopython installed from the wheel,
     # so just want the Tests (and Doc) folders present here:
