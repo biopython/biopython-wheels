@@ -25,9 +25,10 @@ function run_tests {
     python --version
     # We want to do this using the Biopython installed from the wheel,
     # so just want the Tests (and Doc) folders present here:
-    ln -s ../biopython/Tests Tests
-    ln -s ../biopython/Doc Doc
-    cd Tests
+    mkdir clean_slate
+    ln -s ../biopython/Tests clean_slate/Tests
+    ln -s ../biopython/Doc clean_slate/Doc
+    cd clean_slate/Tests
     # Check the simplest import, and version for consistency
     python -c "import Bio; print('Biopython version: ' + Bio.__version__)"
     # This will confirm some of our C code compiled fine:
