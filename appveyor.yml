@@ -62,6 +62,7 @@ install:
     # Update pip
     - python -m ensurepip
     - python -m pip install --upgrade pip
+    - python -m pip install setuptools wheel
 
     # Fix MSVC builds for 64-bit Python. See:
     # http://stackoverflow.com/questions/32091593/cannot-install-windows-sdk-7-1-on-windows-10
