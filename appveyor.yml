@@ -102,7 +102,7 @@ test_script:
     - "python -c \"import Bio; print('Biopython version ' + Bio.__version__)\""
     # This will confirm some of our C code compiled fine:
     - "python -c \"from Bio.Nexus import cnexus; from Bio import cpairwise2\""
-    - "python -c \"from Bio import Cluster; print('Bio.Cluster version ' + Cluster.version())\""
+    - "python -c \"from Bio import Cluster; print('Bio.Cluster version ' + Cluster.__version__)\""
     # Now let's run our full test suite...
     # We want to do this using the Biopython installed from the wheel,
     # so just want the Tests (and Doc) folders present here:
