@@ -30,8 +30,16 @@ function run_tests {
     ln -s ../../biopython/Tests
     ln -s ../../biopython/Doc
     cd Tests
+    pwd
+    ls -l
+    ls -l ..
+    ls -l ../..
     # Check the simplest import, and version for consistency
     python -c "import Bio; print('Biopython version: ' + Bio.__version__)"
+    python -c "import Bio; print(Bio.__file__)"
+    python -c "import os, Bio; print(os.listdir(os.path.split(Bio.__file__)[0]))"
+    python -c "import os, Bio; print(os.listdir(os.path.split(Bio.__file__)[0] + '/KDTree'))"
+    python -c "import os, Bio; print(os.listdir(os.path.split(Bio.__file__)[0] + '/Align'))"
     # This will confirm some of our C code compiled fine:
     python -c "from Bio.Nexus import cnexus; from Bio import cpairwise2"
     python -c "from Bio import Cluster; print('Bio.Cluster version: ' + Cluster.__version__)"
