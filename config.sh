@@ -27,10 +27,15 @@ function run_tests {
     python --version
     # We want to do this using the Biopython installed from the wheel,
     # so just want the Tests (and Doc) folders present here:
+    pwd
+    ls -l
     mkdir clean_slate
     cd clean_slate
+    pwd
+    ls -l
     ln -s ../../biopython/Tests
     ln -s ../../biopython/Doc
+    ls -l
     cd Tests
     pwd
     ls -l
