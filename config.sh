@@ -29,18 +29,18 @@ function run_tests {
     # so just want the Tests (and Doc) folders present here:
     pwd
     ls -l
-    mkdir clean_slate
-    cd clean_slate
-    pwd
+    echo 'Making symlinks'
+    ln -s ../biopython/Doc
     ls -l
-    ln -s ../../biopython/Tests
-    ln -s ../../biopython/Doc
-    ls -l
+    mkdir Tests
     cd Tests
+    cp -R ../../biopython/Tests/* .
+    echo 'Copied tests (rather than symlink)'
     pwd
     ls -l
     ls -l ..
     ls -l ../..
+    pwd
     # Check the simplest import, and version for consistency
     python -c "import Bio; print('Biopython version: ' + Bio.__version__)"
     python -c "import Bio; print(Bio.__file__)"
