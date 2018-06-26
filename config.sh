@@ -27,20 +27,13 @@ function run_tests {
     python --version
     # We want to do this using the Biopython installed from the wheel,
     # so just want the Tests (and Doc) folders present here:
-    pwd
-    ls -l
-    echo 'Making symlinks'
     ln -s ../biopython/Doc
-    ls -l
+    # We previously used a symlink to tests, but that stopped working
+    # (perhaps a file system issue, run_tests.py seemed to pull in the
+    # uncompiled Bio folder and all the C code tests broke).
     mkdir Tests
     cd Tests
     cp -R ../../biopython/Tests/* .
-    echo 'Copied tests (rather than symlink)'
-    pwd
-    ls -l
-    ls -l ..
-    ls -l ../..
-    pwd
     # Check the simplest import, and version for consistency
     python -c "import Bio; print('Biopython version: ' + Bio.__version__)"
     python -c "import Bio; print(Bio.__file__)"
