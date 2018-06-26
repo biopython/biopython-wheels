@@ -102,7 +102,7 @@ matrix:
         - TEST_DEPENDS="numpy==1.13.0"
     - os: osx
       env:
-        - PYTHON_VERSION=pypy-6.0
+        - MB_PYTHON_VERSION=pypy-6.0
         - TEST_DEPENDS="numpy==1.13.0"
         - VENV=venv
 
