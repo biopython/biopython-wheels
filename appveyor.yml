@@ -2,7 +2,7 @@ environment:
   global:
     REPO_DIR: biopython
     PACKAGE_NAME: biopython
-    BUILD_COMMIT: biopython-172
+    BUILD_COMMIT: biopython-173
     WHEELHOUSE_UPLOADER_USERNAME: travis-worker
     WHEELHOUSE_UPLOADER_SECRET:
         secure:
