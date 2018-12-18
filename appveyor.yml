@@ -41,6 +41,14 @@ environment:
       PYTHON_VERSION: "3.6"
       PYTHON_ARCH: "64"
       TEST_DEPENDS: "numpy==1.12.0"
+    - PYTHON: "C:\\Miniconda36"
+      PYTHON_VERSION: "3.7"
+      PYTHON_ARCH: "32"
+      TEST_DEPENDS: "numpy==1.14.5
+    - PYTHON: "C:\\Miniconda37-x64"
+      PYTHON_VERSION: "3.7"
+      PYTHON_ARCH: "64"
+      TEST_DEPENDS: "numpy==1.14.5"
 
 
 # We always use a 64-bit machine, but can build x86 distributions
