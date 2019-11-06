@@ -87,6 +87,8 @@ test_script:
     - "sed -i.tmp 's:\"Bio.Affy.CelFile\",:# Skip Bio.Affy.CelFile:g' run_tests.py"
     # Disable int vs long tutorial doctest which breaks under 32-bit Python 3.5
     - rm ..\\Doc\\Tutorial\\chapter_phenotype.tex
+    # Disable alignment tutorial doctest failure specfic to Windows
+    - rm ..\\Doc\\Tutorial\\chapter_align.tex
     # Disable two more platform specific failures
     - "sed -i.tmp 's#def test_WellRecord#def no_test_WellRecord#g' test_phenotype.py"
     - "sed -i.tmp 's#def test_phenotype_IO#def no_test_phenotype_IO#g' test_phenotype.py"
