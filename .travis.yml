@@ -13,6 +13,8 @@ env:
         # the Rackspace account used here, or use your own account.
         - secure:
             "5/U+SFc0p1n07i9Hy091YkpLDXxOZviczNYW/juQqQVqqSjwgWoVhkkfy7vJrc0+NwSf8pVD7Lq8WdUhAygbXAN443/R4wATbWi87oLwXrOLLpwWBEDnRzhPxANMq6ADigXm8rjZJnkEDmB2gs8yTOXDVxgysGl1a4+3nXezeITolcaaTgh5x7XslwmFEwhnZxLxh/TkpyEGEtvi6tEB3mCEJzcFQ0DS3InEXp8qJRkX+QH8zJc9cUO9PPJ3BSHzm8MvdXG+CAcaA9UJwonBRsNqDlrQIdZLEMxTzNMnfVOMbam9zMLaeFc0RjcVALKKhS3UJ5xU6CnwBToz9LWTCvi6hs6Ijooj4gYCLTijKgZAheU0/BlNqc6UcL25b9OSMLr1VvFoWxsxMi2tPAj0TnaR+zI03UutGNgbbf659HpyOgi7b/t460OhNnd2HM4xBYbevYqt3t7cQ/43cacCocaC92Y0ZNTEIsJduVt3Un/FPe8Fbmcm/iXCwx0ZI95c0PmAbkz1PipVtVPGPqYMLQi5WLpBAcYUINxREQtoukh6k55pbaHWBNKfkradRQZMRR7/B0xBkJVZwwsxJjg6dbq9HcQQ/t5nZzlCcagn3m1awjIqx7LiyzYF3AvDWL2itpEseA5wIPFadGHPBlt/69lvG1qJ+LnTjzFXSPY4j1w="
+      # Get extra wheels from Rackspace container
+      - MANYLINUX_URL=https://5cf40426d9f06eb7461d-6fe47d9331aba7cd62fc36c7196769e4.ssl.cf2.rackcdn.com
 
 language: python
 # The travis Python version is unrelated to the version we build and test
@@ -110,6 +112,7 @@ matrix:
         - TEST_DEPENDS="numpy==1.17.3"
 
 before_install:
+    - python -m ensurepip
     - BUILD_DEPENDS="wheel"
     - source multibuild/common_utils.sh
     - source multibuild/travis_steps.sh
