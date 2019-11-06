@@ -65,11 +65,13 @@ build_script:
 
 test_script:
     # create test env
-    - conda create --yes -n test_env python=%PYTHON_VERSION% %TEST_DEPENDS%
-    - activate test_env
+    - virtualenv --python %PYTHON%\Python.exe test_env
+    - test_env\Scripts\activate.bat
+    - where python
+    - python -m pip install TEST_DEPENDS%
 
     # install from wheel
-    - pip install --no-index --find-links dist/ %PACKAGE_NAME%
+    - python -m pip install --pre --no-index --find-links %REPO_DIR%\dist\ %PACKAGE_NAME%
 
     # run test from installed wheel.
     - cd ..
