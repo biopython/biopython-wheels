@@ -9,6 +9,14 @@ environment:
             rGyl1dSDGB0VGdWO6GVnSRDfbsXxqENaRXRWFjRI91hOQVbgcmYphSQ+wNBzO1LB
 
   matrix:
+    - PYTHON: "C:\\Miniconda38"
+      PYTHON_VERSION: "3.8"
+      PYTHON_ARCH: "32"
+      TEST_DEPENDS: "numpy==1.17.3"
+    - PYTHON: "C:\\Miniconda38-x64"
+      PYTHON_VERSION: "3.8"
+      PYTHON_ARCH: "64"
+      TEST_DEPENDS: "numpy==1.17.3"
     - PYTHON: "C:\\Miniconda37"
       PYTHON_VERSION: "3.7"
       PYTHON_ARCH: "32"
