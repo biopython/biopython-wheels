@@ -9,52 +9,27 @@ environment:
             rGyl1dSDGB0VGdWO6GVnSRDfbsXxqENaRXRWFjRI91hOQVbgcmYphSQ+wNBzO1LB
 
   matrix:
-    - PYTHON: "C:\\Miniconda38"
-      PYTHON_VERSION: "3.8"
-      PYTHON_ARCH: "32"
+    - PYTHON: "C:\\Python38"
       TEST_DEPENDS: "numpy==1.17.3"
-    - PYTHON: "C:\\Miniconda38-x64"
-      PYTHON_VERSION: "3.8"
-      PYTHON_ARCH: "64"
+    - PYTHON: "C:\\Python38-x64"
       TEST_DEPENDS: "numpy==1.17.3"
-    - PYTHON: "C:\\Miniconda37"
-      PYTHON_VERSION: "3.7"
-      PYTHON_ARCH: "32"
+    - PYTHON: "C:\\Python37"
       TEST_DEPENDS: "numpy==1.14.5"
-    - PYTHON: "C:\\Miniconda37-x64"
-      PYTHON_VERSION: "3.7"
-      PYTHON_ARCH: "64"
+    - PYTHON: "C:\\Python37-x64"
       TEST_DEPENDS: "numpy==1.14.5"
-    - PYTHON: "C:\\Miniconda"
-      PYTHON_VERSION: "2.7"
-      PYTHON_ARCH: "32"
+    - PYTHON: "C:\\Python"
       TEST_DEPENDS: "numpy==1.8.0"
-    - PYTHON: "C:\\Miniconda-x64"
-      PYTHON_VERSION: "2.7"
-      PYTHON_ARCH: "64"
+    - PYTHON: "C:\\Python-x64"
       TEST_DEPENDS: "numpy==1.8.0"
-    - PYTHON: "C:\\Miniconda35"
-      PYTHON_VERSION: "3.5"
-      PYTHON_ARCH: "32"
+    - PYTHON: "C:\\Python35"
       TEST_DEPENDS: "numpy==1.10.1"
-    - PYTHON: "C:\\Miniconda35-x64"
-      PYTHON_VERSION: "3.5"
-      PYTHON_ARCH: "64"
+    - PYTHON: "C:\\Python35-x64"
       TEST_DEPENDS: "numpy==1.10.1"
-    - PYTHON: "C:\\Miniconda36"
-      PYTHON_VERSION: "3.6"
-      PYTHON_ARCH: "32"
+    - PYTHON: "C:\\Python36"
       TEST_DEPENDS: "numpy==1.12.0"
-    - PYTHON: "C:\\Miniconda36-x64"
-      PYTHON_VERSION: "3.6"
-      PYTHON_ARCH: "64"
+    - PYTHON: "C:\\Python36-x64"
       TEST_DEPENDS: "numpy==1.12.0"
 
-
-# We always use a 64-bit machine, but can build x86 distributions
-# with the TARGET_ARCH variable.
-platform:
-    - x64
 
 matrix:
     fast_finish: false  # for testing
@@ -63,14 +38,14 @@ install:
     # Fetch submodules
     - git submodule update --init --recursive
 
-    # Install miniconda
-    - SET PATH=%PYTHON%;%PYTHON%\Scripts;%PYTHON%\Library\bin;%PATH%
-    - conda info
+    # Install new Python if necessary
+    - ps: .\multibuild\install_python.ps1
 
-    # Update pip
-    - python -m ensurepip
-    - python -m pip install --upgrade pip
-    - python -m pip install setuptools wheel
+    # Prepend newly installed Python to the PATH of this build (this cannot be
+    # done from inside the powershell script as it would require to restart
+    # the parent CMD process).
+    - SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%
+    - python -m pip install -U pip setuptools
 
     # Fix MSVC builds for 64-bit Python. See:
     # http://stackoverflow.com/questions/32091593/cannot-install-windows-sdk-7-1-on-windows-10
@@ -81,14 +56,12 @@ install:
     - python -c "import struct; print(struct.calcsize('P') * 8)"
 
 build_script:
-    # Install build requirements
-    # - conda install --yes %BUILD_DEPENDS%
-
-    # build wheel:
+    # Build wheel
+    - python -m pip install wheel
     - cd %REPO_DIR%
     - git checkout %BUILD_COMMIT%
     - python setup.py bdist_wheel
-    - ls dist/
+    - cd ..
 
 test_script:
     # create test env
