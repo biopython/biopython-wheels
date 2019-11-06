@@ -2,7 +2,8 @@ env:
     global:
         - REPO_DIR=biopython
         # Commit from your-project that you want to build
-        - BUILD_COMMIT=biopython-175
+        # This is biopython-175 with Python 3.8 SubsMat fix:
+        - BUILD_COMMIT=1325ee721b2f0dbe7c66450f7ca89cc59f9e4c01
         - PLAT=x86_64
         - UNICODE_WIDTH=32
         - WHEELHOUSE_UPLOADER_USERNAME=travis-worker

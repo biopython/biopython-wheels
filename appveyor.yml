@@ -2,7 +2,8 @@ environment:
   global:
     REPO_DIR: biopython
     PACKAGE_NAME: biopython
-    BUILD_COMMIT: biopython-175
+    # This is biopython-175 with SubsMat Python 3.8 fix:
+    BUILD_COMMIT: 1325ee721b2f0dbe7c66450f7ca89cc59f9e4c01
     WHEELHOUSE_UPLOADER_USERNAME: travis-worker
     WHEELHOUSE_UPLOADER_SECRET:
         secure:
