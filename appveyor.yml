@@ -73,8 +73,9 @@ test_script:
     # install from wheel
     - python -m pip install --pre --no-index --find-links %REPO_DIR%\dist\ %PACKAGE_NAME%
 
-    # run test from installed wheel.
-    - cd ..
+    # Change into an innocuous directory and find tests from installation
+    - mkdir for_testing
+    - cd for_testing
     - "python -c \"import Bio; print('Biopython version ' + Bio.__version__)\""
     # This will confirm some of our C code compiled fine:
     - "python -c \"from Bio.Nexus import cnexus; from Bio import cpairwise2\""
