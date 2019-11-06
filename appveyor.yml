@@ -95,7 +95,7 @@ test_script:
     - "sed -i.tmp 's#def test_WellRecord#def no_test_WellRecord#g' test_phenotype.py"
     - "sed -i.tmp 's#def test_phenotype_IO#def no_test_phenotype_IO#g' test_phenotype.py"
     - "python run_tests.py --offline"
-    - cd ..
+    - cd ../..
 
 artifacts:
     - path: "%REPO_DIR%\\dist\\*"
