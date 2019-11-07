@@ -85,6 +85,8 @@ test_script:
     # so just want the Tests (and Doc) folders present here:
     - mv ..\\%REPO_DIR%\\Tests Tests
     - mv ..\\%REPO_DIR%\\Doc Doc
+    - mkdir Bio\\Align\\substitution_matrices\\data
+    - mv ..\\%REPO_DIR%\\Bio\\Align\\substitution_matrices\\data Bio\\Align\\substitution_matrices\\data\\
     - cd Tests
     # Disable doctest which breaks under 64-bit Python 2.7
     - "sed -i.tmp 's:\"Bio.Affy.CelFile\",:# Skip Bio.Affy.CelFile:g' run_tests.py"
