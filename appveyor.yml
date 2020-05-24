@@ -22,14 +22,6 @@ environment:
       TEST_DEPENDS: "numpy==1.12.0"
     - PYTHON: "C:\\Python36-x64"
       TEST_DEPENDS: "numpy==1.12.0"
-    - PYTHON: "C:\\Python35"
-      TEST_DEPENDS: "numpy==1.10.4"
-    - PYTHON: "C:\\Python35-x64"
-      TEST_DEPENDS: "numpy==1.10.4"
-    - PYTHON: "C:\\Python27"
-      TEST_DEPENDS: "numpy==1.8.0"
-    - PYTHON: "C:\\Python27-x64"
-      TEST_DEPENDS: "numpy==1.8.0"
 
 matrix:
     fast_finish: false  # for testing
@@ -86,10 +78,6 @@ test_script:
     - mv ..\\%REPO_DIR%\\Tests Tests
     - mv ..\\%REPO_DIR%\\Doc Doc
     - cd Tests
-    # Disable doctest which breaks under 64-bit Python 2.7
-    - "sed -i.tmp 's:\"Bio.Affy.CelFile\",:# Skip Bio.Affy.CelFile:g' run_tests.py"
-    # Disable int vs long tutorial doctest which breaks under 32-bit Python 3.5
-    - rm ..\\Doc\\Tutorial\\chapter_phenotype.tex
     # Disable alignment tutorial doctest failure specfic to Windows
     - rm ..\\Doc\\Tutorial\\chapter_align.tex
     # Disable two more platform specific failures
