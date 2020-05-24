@@ -38,7 +38,6 @@ function run_tests {
     python -c "import Bio; print('Biopython version: ' + Bio.__version__)"
     python -c "import Bio; print(Bio.__file__)"
     python -c "import os, Bio; print(os.listdir(os.path.split(Bio.__file__)[0]))"
-    python -c "import os, Bio; print(os.listdir(os.path.split(Bio.__file__)[0] + '/KDTree'))"
     python -c "import os, Bio; print(os.listdir(os.path.split(Bio.__file__)[0] + '/Align'))"
     # This will confirm some of our C code compiled fine:
     python -c "from Bio.Nexus import cnexus; from Bio import cpairwise2"
