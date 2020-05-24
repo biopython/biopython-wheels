@@ -16,62 +16,56 @@ env:
             "5/U+SFc0p1n07i9Hy091YkpLDXxOZviczNYW/juQqQVqqSjwgWoVhkkfy7vJrc0+NwSf8pVD7Lq8WdUhAygbXAN443/R4wATbWi87oLwXrOLLpwWBEDnRzhPxANMq6ADigXm8rjZJnkEDmB2gs8yTOXDVxgysGl1a4+3nXezeITolcaaTgh5x7XslwmFEwhnZxLxh/TkpyEGEtvi6tEB3mCEJzcFQ0DS3InEXp8qJRkX+QH8zJc9cUO9PPJ3BSHzm8MvdXG+CAcaA9UJwonBRsNqDlrQIdZLEMxTzNMnfVOMbam9zMLaeFc0RjcVALKKhS3UJ5xU6CnwBToz9LWTCvi6hs6Ijooj4gYCLTijKgZAheU0/BlNqc6UcL25b9OSMLr1VvFoWxsxMi2tPAj0TnaR+zI03UutGNgbbf659HpyOgi7b/t460OhNnd2HM4xBYbevYqt3t7cQ/43cacCocaC92Y0ZNTEIsJduVt3Un/FPe8Fbmcm/iXCwx0ZI95c0PmAbkz1PipVtVPGPqYMLQi5WLpBAcYUINxREQtoukh6k55pbaHWBNKfkradRQZMRR7/B0xBkJVZwwsxJjg6dbq9HcQQ/t5nZzlCcagn3m1awjIqx7LiyzYF3AvDWL2itpEseA5wIPFadGHPBlt/69lvG1qJ+LnTjzFXSPY4j1w="
 
 language: python
+python: 3.6
 os: linux
-dist: bionic
+dist: trusty
 services: docker
 
 jobs:
   include:
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.6
-        - TEST_DEPENDS="numpy==1.10.1"
-      python: 3.6
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.6
-        - PLAT=i686
-        - TEST_DEPENDS="numpy==1.10.1"
-      python: 3.6
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.7
-        - TEST_DEPENDS="numpy==1.14.5"
-      python: 3.7
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.7
-        - PLAT=i686
-        - TEST_DEPENDS="numpy==1.14.5"
-      python: 3.7
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.8
-        - TEST_DEPENDS="numpy==1.17.3"
-      python: 3.8
-    - os: linux
-      env:
-        - MB_PYTHON_VERSION=3.8
-        - PLAT=i686
-        - TEST_DEPENDS="numpy==1.17.3"
+      # add osx first into the queue as they have lower parallelism
     - os: osx
       language: generic
       env:
         - MB_PYTHON_VERSION=3.6
         - TEST_DEPENDS="numpy==1.12.0"
-      python: 3.6
     - os: osx
       language: generic
       env:
         - MB_PYTHON_VERSION=3.7
         - TEST_DEPENDS="numpy==1.14.5"
-      python: 3.7
     - os: osx
       language: generic
       env:
         - MB_PYTHON_VERSION=3.8
         - TEST_DEPENDS="numpy==1.17.3"
-      python: 3.8
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION=3.6
+        - TEST_DEPENDS="numpy==1.12.0"
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION=3.6
+        - PLAT=i686
+        - TEST_DEPENDS="numpy==1.12.0"
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION=3.7
+        - TEST_DEPENDS="numpy==1.14.5"
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION=3.7
+        - PLAT=i686
+        - TEST_DEPENDS="numpy==1.14.5"
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION=3.8
+        - TEST_DEPENDS="numpy==1.17.3"
+    - os: linux
+      env:
+        - MB_PYTHON_VERSION=3.8
+        - PLAT=i686
+        - TEST_DEPENDS="numpy==1.17.3"
 
 before_install:
     - BUILD_DEPENDS="wheel"
