@@ -54,7 +54,6 @@ jobs:
         - MB_PYTHON_VERSION=3.8
         - PLAT=i686
         - TEST_DEPENDS="numpy==1.17.3"
-      python: 3.8
     - os: osx
       language: generic
       env:
