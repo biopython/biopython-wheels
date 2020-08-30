@@ -22,3 +22,9 @@ on RackSpace, from where we download them and then upload them
 to PyPI as part of making a Biopython release.
 
 - http://biopython.org/wiki/Building_a_release
+
+There is a basic pre-commit configuration provided to validate
+the YAML files as a git pre-commit hook. Install this as follows::
+
+    $ pip install pre-commit
+    $ pre-commit install

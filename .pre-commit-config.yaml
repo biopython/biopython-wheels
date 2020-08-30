@@ -1,0 +1,12 @@
+# pre-commit run --all-files
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: mixed-line-ending
+-   repo: https://github.com/myint/rstcheck
+    rev: ''
+    hooks:
+    -   id: rstcheck
+        args: [--report=warning]
