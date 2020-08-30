@@ -4,6 +4,8 @@ environment:
     PACKAGE_NAME: biopython
     # biopython-177 (not yet tagged):
     BUILD_COMMIT: adac231c9b1470a7f8036876d5d02959554c1bbb
+    BIOPYTHON_STAGING_UPLOAD_TOKEN:
+      secure: sulPawBUvpS2XWg79MIKiFINMnlPv6BbBcC4rXhcXNEIJIOufv0Ve+VYTbUPHfgv
 
   matrix:
     - PYTHON: "C:\\Python38"
@@ -86,4 +88,15 @@ artifacts:
     - path: "%REPO_DIR%\\dist\\*"
 
 on_success:
-    - echo "TODO - upload wheels to staging area..."
+    # Upload wheels to anaconda for staging before PyPI, using shared
+    # infrastructure at https://anaconda.org/multibuild-wheels-staging
+    # The secret token is defined in the AppVeyor configuration
+    # from https://anaconda.org/scipy-wheels-nightly/settings/access
+    - $env:ANACONDA_ORG="multibuild-wheels-staging"
+    - $env:ANACONDA_TOKEN = $env:BIOPYTHON_STAGING_UPLOAD_TOKEN
+    - python -m pip install git+https://github.com/Anaconda-Server/anaconda-client.git
+    - if (Test-Path env:ANACONDA_TOKEN) {
+        anaconda -t $env:ANACONDA_TOKEN upload -u $env:ANACONDA_ORG --force $env:REPO_DIR/dist/*.whl
+      } else {
+        echo "Not uploading since token not set (expected if this is a pull request)"
+      }
