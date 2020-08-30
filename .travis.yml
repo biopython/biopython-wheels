@@ -74,4 +74,16 @@ script:
     - install_run $PLAT
 
 after_success:
-    - echo "TODO - upload wheels to staging area..."
+    # Upload wheels to anaconda for staging before PyPI, using shared
+    # infrastructure at https://anaconda.org/multibuild-wheels-staging
+    # The secret token is defined in the TravisCI configuration
+    # https://travis-ci.org/github/biopython/biopython-wheels/settings
+    # from https://anaconda.org/scipy-wheels-nightly/settings/access
+    - ANACONDA_ORG="multibuild-wheels-staging";
+    - ANACONDA_TOKEN=${BIOPYTHON_STAGING_UPLOAD_TOKEN};
+    - python -m pip install git+https://github.com/Anaconda-Server/anaconda-client;
+    - if [ -n "${ANACONDA_TOKEN}" ] ; then
+        anaconda -t ${ANACONDA_TOKEN} upload -u ${ANACONDA_ORG} --force ${TRAVIS_BUILD_DIR}/wheelhouse/*.whl;
+      else
+        echo "Not uploading since token not set (expected if this is a pull request)";
+      fi
