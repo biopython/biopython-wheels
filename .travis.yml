@@ -6,14 +6,6 @@ env:
         - BUILD_COMMIT=adac231c9b1470a7f8036876d5d02959554c1bbb
         - PLAT=x86_64
         - UNICODE_WIDTH=32
-        - WHEELHOUSE_UPLOADER_USERNAME=travis-worker
-        # Following generated with
-        # travis encrypt -r biopython/biopython-wheels WHEELHOUSE_UPLOADER_SECRET=<the api key>
-        # This is for Rackspace uploads.  Contact Matthew Brett, or the
-        # scikit-learn team, for # permission (and the API key) to upload to
-        # the Rackspace account used here, or use your own account.
-        - secure:
-            "5/U+SFc0p1n07i9Hy091YkpLDXxOZviczNYW/juQqQVqqSjwgWoVhkkfy7vJrc0+NwSf8pVD7Lq8WdUhAygbXAN443/R4wATbWi87oLwXrOLLpwWBEDnRzhPxANMq6ADigXm8rjZJnkEDmB2gs8yTOXDVxgysGl1a4+3nXezeITolcaaTgh5x7XslwmFEwhnZxLxh/TkpyEGEtvi6tEB3mCEJzcFQ0DS3InEXp8qJRkX+QH8zJc9cUO9PPJ3BSHzm8MvdXG+CAcaA9UJwonBRsNqDlrQIdZLEMxTzNMnfVOMbam9zMLaeFc0RjcVALKKhS3UJ5xU6CnwBToz9LWTCvi6hs6Ijooj4gYCLTijKgZAheU0/BlNqc6UcL25b9OSMLr1VvFoWxsxMi2tPAj0TnaR+zI03UutGNgbbf659HpyOgi7b/t460OhNnd2HM4xBYbevYqt3t7cQ/43cacCocaC92Y0ZNTEIsJduVt3Un/FPe8Fbmcm/iXCwx0ZI95c0PmAbkz1PipVtVPGPqYMLQi5WLpBAcYUINxREQtoukh6k55pbaHWBNKfkradRQZMRR7/B0xBkJVZwwsxJjg6dbq9HcQQ/t5nZzlCcagn3m1awjIqx7LiyzYF3AvDWL2itpEseA5wIPFadGHPBlt/69lvG1qJ+LnTjzFXSPY4j1w="
 
 language: python
 python: 3.6
@@ -82,15 +74,4 @@ script:
     - install_run $PLAT
 
 after_success:
-    # Report checksums (needs to work on Linux and Mac OS X)
-    # - md5sum ${TRAVIS_BUILD_DIR}/wheelhouse/${REPO_DIR}*
-    # - sha256sum ${TRAVIS_BUILD_DIR}/wheelhouse/${REPO_DIR}*
-    # Upload wheels to Rackspace container
-    - pip install wheelhouse-uploader
-    # This uploads the wheels to a Rackspace container owned by the
-    # scikit-learn team, available at http://wheels.scipy.org.  See above
-    # for information on using this account or choosing another.
-    - python -m wheelhouse_uploader upload --local-folder
-        ${TRAVIS_BUILD_DIR}/wheelhouse/
-        --no-update-index
-        wheels
+    - echo "TODO - upload wheels to staging area..."
