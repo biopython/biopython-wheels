@@ -93,11 +93,5 @@ on_success:
     # The secret token is defined in the AppVeyor configuration
     # from https://anaconda.org/scipy-wheels-nightly/settings/access
     - python -m pip install git+https://github.com/Anaconda-Server/anaconda-client.git
-    - ps: >-
-        $env:ANACONDA_ORG="multibuild-wheels-staging";
-        $env:ANACONDA_TOKEN = $env:BIOPYTHON_STAGING_UPLOAD_TOKEN;
-        if (Test-Path env:ANACONDA_TOKEN) {
-          anaconda -t $env:ANACONDA_TOKEN upload -u $env:ANACONDA_ORG --force $env:REPO_DIR/dist/*.whl --no-progress
-        } else {
-          echo "Not uploading since token not set (expected if this is a pull request)"
-        }
+    - cmd: set ANACONDA_ORG="multibuild-wheels-staging"
+    - IF NOT "%BIOPYTON_STAGING_UPLOAD_TOKEN%" == "" anaconda -t %BIOPYTHON_STAGING_UPLOAD_TOKEN% upload --force --no-progress -u %ANACONDA_ORG% "dist\*.whl"
