@@ -97,7 +97,7 @@ on_success:
         $env:ANACONDA_ORG="multibuild-wheels-staging";
         $env:ANACONDA_TOKEN = $env:BIOPYTHON_STAGING_UPLOAD_TOKEN;
         if (Test-Path env:ANACONDA_TOKEN) {
-          anaconda -t $env:ANACONDA_TOKEN upload -u $env:ANACONDA_ORG --force $env:REPO_DIR/dist/*.whl
+          anaconda -t $env:ANACONDA_TOKEN upload -u $env:ANACONDA_ORG --force $env:REPO_DIR/dist/*.whl --no-progress
         } else {
           echo "Not uploading since token not set (expected if this is a pull request)"
         }
