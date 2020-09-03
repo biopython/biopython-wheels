@@ -2,8 +2,8 @@ environment:
   global:
     REPO_DIR: biopython
     PACKAGE_NAME: biopython
-    # biopython-177 (not yet tagged):
-    BUILD_COMMIT: adac231c9b1470a7f8036876d5d02959554c1bbb
+    # biopython-178 (not yet tagged):
+    BUILD_COMMIT: 23b7548dbf1365f2f134695c7007af3f86af5dc0
     BIOPYTHON_STAGING_UPLOAD_TOKEN:
       secure: sulPawBUvpS2XWg79MIKiFINMnlPv6BbBcC4rXhcXNEIJIOufv0Ve+VYTbUPHfgv
 
