@@ -35,7 +35,7 @@ jobs:
       language: generic
       env:
         - MB_PYTHON_VERSION=3.9
-        - TEST_DEPENDS="numpy==1.19.3"
+        - TEST_DEPENDS="numpy==1.20"
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.6
@@ -66,12 +66,12 @@ jobs:
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.9
-        - TEST_DEPENDS="numpy==1.19.3"
+        - TEST_DEPENDS="numpy==1.20"
     - os: linux
       env:
         - MB_PYTHON_VERSION=3.9
         - PLAT=i686
-        - TEST_DEPENDS="numpy==1.19.3"
+        - TEST_DEPENDS="numpy==1.20"
 
 before_install:
     - BUILD_DEPENDS="wheel"
