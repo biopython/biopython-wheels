@@ -96,7 +96,7 @@ after_success:
     - ANACONDA_ORG="multibuild-wheels-staging";
     - ANACONDA_TOKEN=${BIOPYTHON_STAGING_UPLOAD_TOKEN};
     - python -m pip install git+https://github.com/Anaconda-Platform/anaconda-project
-    - python -m pip install git+https://github.com/Anaconda-Server/anaconda-client
+    - python -m pip install git+https://github.com/Anaconda-Platform/anaconda-client
     - if [ -n "${ANACONDA_TOKEN}" ] ; then
         anaconda -t ${ANACONDA_TOKEN} upload -u ${ANACONDA_ORG} --force ${TRAVIS_BUILD_DIR}/wheelhouse/*.whl;
       else

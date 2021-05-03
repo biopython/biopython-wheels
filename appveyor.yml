@@ -97,5 +97,5 @@ on_success:
     # The secret token is defined in the AppVeyor configuration
     # from https://anaconda.org/scipy-wheels-nightly/settings/access
     - python -m pip install git+https://github.com/Anaconda-Platform/anaconda-project.git
-    - python -m pip install git+https://github.com/Anaconda-Server/anaconda-client.git
+    - python -m pip install git+https://github.com/Anaconda-Platform/anaconda-client.git
     - IF NOT "%BIOPYTHON_STAGING_UPLOAD_TOKEN%" == "" anaconda -t %BIOPYTHON_STAGING_UPLOAD_TOKEN% upload --force --no-progress -u "multibuild-wheels-staging" "dist\*.whl"
