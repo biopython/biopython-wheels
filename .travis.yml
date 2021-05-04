@@ -8,10 +8,9 @@ env:
         - UNICODE_WIDTH=32
 
 language: python
-python: 3.6
-os: linux
-dist: trusty
+dist: bionic
 services: docker
+os: linux
 
 jobs:
   include:
