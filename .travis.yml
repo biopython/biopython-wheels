@@ -2,8 +2,8 @@ env:
     global:
         - REPO_DIR=biopython
         # Commit from your-project that you want to build
-        # biopython-178 (not yet tagged):
-        - BUILD_COMMIT=23b7548dbf1365f2f134695c7007af3f86af5dc0
+        # biopython-179 (not yet tagged):
+        - BUILD_COMMIT=4bace1d944805ef0df4f1f642c2f66d7863cf0ac
         - PLAT=x86_64
         - UNICODE_WIDTH=32
 
