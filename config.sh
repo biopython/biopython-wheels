@@ -16,6 +16,7 @@ function run_tests {
         echo "Forcing en_US.UTF-8 as workaround for encoding issues in Biopython 1.70 tests"
         # There is likely a more consise method to do this, but this works:
         if [ "$(uname -m)" == "aarch64" ]; then
+            apt-get update
             apt-get install -y sudo locales language-pack-en-base
         fi
         sudo echo "LANG=en_US.UTF-8" > /etc/default/locale
