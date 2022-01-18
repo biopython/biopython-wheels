@@ -8,6 +8,10 @@ environment:
       secure: sulPawBUvpS2XWg79MIKiFINMnlPv6BbBcC4rXhcXNEIJIOufv0Ve+VYTbUPHfgv
 
   matrix:
+    - PYTHON: "C:\\Python310"
+      TEST_DEPENDS: "numpy==1.19.3"
+    - PYTHON: "C:\\Python310-x64"
+      TEST_DEPENDS: "numpy==1.19.3"
     - PYTHON: "C:\\Python39"
       TEST_DEPENDS: "numpy==1.19.3"
     - PYTHON: "C:\\Python39-x64"
