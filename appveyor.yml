@@ -63,7 +63,7 @@ build_script:
 
 test_script:
     # create test env
-    - virtualenv --python %PYTHON%\Python.exe test_env
+    - python -m virtualenv --python %PYTHON%\Python.exe test_env
     - test_env\Scripts\activate.bat
     - where python
     - python -m pip install %TEST_DEPENDS%
