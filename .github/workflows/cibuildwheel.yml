@@ -10,8 +10,10 @@ jobs:
       matrix:
         os: [ubuntu-20.04, windows-2019, macos-10.15]
     env:
+      # Seems to have trouble parsing our setup.py, thus:
+      CIBW_PROJECT_REQUIRES_PYTHON: ">=3.7"
       # Quick test with C code using NumPy C API:
-      CIBW_TEST_COMMAND: "python {project}/Tests/test_Cluster.py"
+      CIBW_TEST_COMMAND: "python biopython/Tests/test_Cluster.py"
       # Explicit numpy versions via ./constraints-Python*.txt
       CIBW_DEPENDENCY_VERSIONS: "./constraints.txt"
 
