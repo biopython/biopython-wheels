@@ -28,7 +28,14 @@ jobs:
       # uses: pypa/cibuildwheel@v2.3.1
       - name: Build wheels
         run: |
-          pipx run cibuildwheel==2.3.1 --config-file pyproject.toml --output-dir wheelhouse biopython
+          # This test is fast, but uses C code with NumPy C API
+          echo 'CIBW_TEST_COMMAND="python {project}/Tests/test_Cluster.py"' >> $GITHUB_ENV
+          # Use our ./constraints-Python*.txt files to set NumPy versions
+          # (we want to use oldest NumPy on each Python to maximise where
+          # the wheel can be run)
+          echo 'CIBW_DEPENDENCY_VERSIONS="./constraints.txt"' >> $GITHUB_ENV
+
+          pipx run cibuildwheel==2.3.1 --output-dir wheelhouse biopython
 
       - uses: actions/upload-artifact@v2
         with:
