@@ -2,3 +2,8 @@
 
 # This test is fast, but uses C code with NumPy C API
 test-command = "python {project}/Tests/test_Cluster.py"
+
+# Use our ./constraints-Python*.txt files to set NumPy versions
+# (we want to use oldest NumPy on each Python to maximise where
+# the wheel can be run)
+dependency-versions = "./constraints.txt"
