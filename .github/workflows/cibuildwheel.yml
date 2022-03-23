@@ -14,8 +14,6 @@ jobs:
       CIBW_PROJECT_REQUIRES_PYTHON: ">=3.7"
       # Quick test with C code using NumPy C API:
       CIBW_TEST_COMMAND: "python {package}/Tests/test_Cluster.py"
-      # Explicit numpy versions via ./constraints-Python*.txt
-      CIBW_DEPENDENCY_VERSIONS: "./constraints.txt"
 
     steps:
       - uses: actions/checkout@v2
