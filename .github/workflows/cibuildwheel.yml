@@ -12,6 +12,8 @@ jobs:
     env:
       # Seems to have trouble parsing our setup.py, thus:
       CIBW_PROJECT_REQUIRES_PYTHON: ">=3.7"
+      # Install numpy with a wheel (do NOT compile it):
+      CIBW_BEFORE_BUILD: "pip install --only-binary :all: numpy"
       # Quick test with C code using NumPy C API:
       CIBW_TEST_COMMAND: "python {package}/Tests/test_Cluster.py"
 
