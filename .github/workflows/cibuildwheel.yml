@@ -13,7 +13,7 @@ jobs:
       # Seems to have trouble parsing our setup.py, thus:
       CIBW_PROJECT_REQUIRES_PYTHON: ">=3.7"
       # Install numpy with a wheel (do NOT compile it):
-      CIBW_BEFORE_BUILD: "pip install --only-binary :all: numpy"
+      CIBW_BEFORE_BUILD: "pip install --only-binary :all: -r requirements.txt"
       # There are no numpy wheels for these:
       CIBW_SKIP: pp37-* pp38-* cp310-manylinux_i686 *-musllinux_*
       # Quick test with C code using NumPy C API:
