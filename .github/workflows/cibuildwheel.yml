@@ -15,7 +15,7 @@ jobs:
       # Install numpy with a wheel (do NOT compile it):
       CIBW_BEFORE_BUILD: "pip install --only-binary :all: numpy"
       # There are no numpy wheels for these:
-      CIBW_SKIP: pp37-* pp38-*
+      CIBW_SKIP: pp37-* pp38-* cp310-manylinux_i686
       # Quick test with C code using NumPy C API:
       CIBW_TEST_COMMAND: "python {package}/Tests/test_Cluster.py"
 
