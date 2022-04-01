@@ -14,7 +14,7 @@ upload to PyPI as part of making a release.
 
 - https://github.com/pypa/cibuildwheel
 
-This reposiotry originally used the ``multibuild`` system developed
+This repository originally used the ``multibuild`` system developed
 by Matthew Brett and the MacPython project, running on TravisCI and
 AppVeyor.
 
