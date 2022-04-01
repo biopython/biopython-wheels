@@ -1,4 +1,4 @@
-# Build requierements for Biopython wheels
+# Build requirements for Biopython wheels
 #
 # To ensure only a numpy wheel is used (not a locally
 # compiled numpy), this is installed with:
