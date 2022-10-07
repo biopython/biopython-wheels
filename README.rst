@@ -10,7 +10,8 @@ It now uses the ``cibuildwheel`` system running on GitHub Actions.
 
 This produces lots and lots of wheel files, zipped up as a ~100MB
 ``artifact.zip`` which initially we will download, unzip, and then
-upload to PyPI as part of making a release.
+upload to PyPI as part of `making a release
+<https://biopython.org/wiki/Building_a_release>`_.
 
 - https://github.com/pypa/cibuildwheel
 
