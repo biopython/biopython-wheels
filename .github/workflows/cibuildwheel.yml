@@ -34,10 +34,10 @@ jobs:
           cd ..
 
       # Could not work out how to give package path with
-      # uses: pypa/cibuildwheel@v2.3.1
+      # uses: pypa/cibuildwheel@v2.11.2
       - name: Build wheels
         run: |
-          pipx run cibuildwheel==2.3.1 --output-dir wheelhouse biopython
+          pipx run cibuildwheel==2.11.2 --output-dir wheelhouse biopython
 
       - uses: actions/upload-artifact@v2
         with:
