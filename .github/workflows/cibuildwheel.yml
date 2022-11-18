@@ -8,7 +8,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-20.04, windows-2019, macos-10.15]
+        os: [ubuntu-20.04, windows-2019, macOS-11]
     env:
       # Seems to have trouble parsing our setup.py, thus:
       CIBW_PROJECT_REQUIRES_PYTHON: ">=3.7"
