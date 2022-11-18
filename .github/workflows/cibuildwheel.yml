@@ -29,8 +29,8 @@ jobs:
         run: |
           git submodule update --init biopython
           cd biopython
-          # This was the commit for Biopython 1.79 before tagged
-          git checkout 048c4cdd717e9eb56affaaf66275b90d7dc274e9
+          # Use commit hash if tag is still pending:
+          git checkout biopython-180
           cd ..
 
       # Could not work out how to give package path with
