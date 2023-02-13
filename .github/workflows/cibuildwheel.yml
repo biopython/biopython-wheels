@@ -30,7 +30,7 @@ jobs:
           git submodule update --init biopython
           cd biopython
           # Use commit hash if tag is still pending:
-          git checkout biopython-180
+          git checkout biopython-181
           cd ..
 
       # Could not work out how to give package path with
