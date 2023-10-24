@@ -14,7 +14,7 @@ jobs:
       CIBW_PROJECT_REQUIRES_PYTHON: ">=3.7"
       # Install numpy with a wheel (do NOT compile it):
       CIBW_BEFORE_BUILD: "pip install --only-binary :all: -r requirements.txt"
-      # There are no numpy wheels for these:
+      # There are/were no numpy wheels for these:
       CIBW_SKIP: pp37-* pp38-* pp39-* cp39-manylinux_i686 cp310-manylinux_i686 cp311-manylinux_i686 *-musllinux_*
       # Quick test with C code using NumPy C API:
       CIBW_TEST_COMMAND: "python {package}/Tests/test_Cluster.py"
@@ -34,10 +34,10 @@ jobs:
           cd ..
 
       # Could not work out how to give package path with
-      # uses: pypa/cibuildwheel@v2.13.1
+      # uses: pypa/cibuildwheel@v2.16.2
       - name: Build wheels
         run: |
-          pipx run cibuildwheel==2.13.1 --output-dir wheelhouse biopython
+          pipx run cibuildwheel==2.16.2 --output-dir wheelhouse biopython
 
       - uses: actions/upload-artifact@v3
         with:
