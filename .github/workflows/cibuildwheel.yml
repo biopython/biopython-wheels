@@ -30,7 +30,8 @@ jobs:
           git submodule update --init biopython
           cd biopython
           # Use commit hash if tag is still pending:
-          git checkout biopython-181
+          # This should be the commit for Biopython 1.82:
+          git checkout 2204ad0b0f92c4b8ed769ce4c1a8a3987b048c6f
           cd ..
 
 
