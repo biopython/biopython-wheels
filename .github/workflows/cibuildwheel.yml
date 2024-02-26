@@ -8,7 +8,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-20.04, windows-2019, macOS-11]
+        # macos-13 is an intel runner, macos-14 is apple silicon
+        os: [ubuntu-20.04, windows-2019, macos-13, macos-14]
     env:
       # Seems to have trouble parsing our setup.py, thus:
       CIBW_PROJECT_REQUIRES_PYTHON: ">=3.8"
