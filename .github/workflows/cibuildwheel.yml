@@ -39,9 +39,8 @@ jobs:
           git submodule update --init biopython
           cd biopython
           # Use commit hash if tag is still pending:
-          git checkout biopython-184
-          # This should let us compile Biopython 1.84 under CPython 3.13
-          git cherry-pick 22ebf951e736bd44f04e3552a4a39723ccb3c219
+          # This is some commits after Biopython 1.84 but before 1.85, to test a CPython 3.13 fix:
+          git checkout 22ebf951e736bd44f04e3552a4a39723ccb3c219
           cd ..
 
       - name: Build wheels
