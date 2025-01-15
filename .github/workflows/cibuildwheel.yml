@@ -39,8 +39,8 @@ jobs:
           git submodule update --init biopython
           cd biopython
           # Use commit hash if tag is still pending:
-          # This is some commits after Biopython 1.84 but before 1.85, to test a CPython 3.13 fix:
-          git checkout 22ebf951e736bd44f04e3552a4a39723ccb3c219
+          # This should become biopython-185:
+          git checkout 668de08f73fca7f8336049dfd78716d7dd095f21
           cd ..
 
       - name: Build wheels
