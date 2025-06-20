@@ -12,7 +12,7 @@ jobs:
         os: [ubuntu-20.04, windows-2019, macos-13, macos-14]
     env:
       # Seems to have trouble parsing our setup.py, thus:
-      CIBW_PROJECT_REQUIRES_PYTHON: ">=3.9"
+      CIBW_PROJECT_REQUIRES_PYTHON: ">=3.9,!=3.13.4"
       # Install numpy with a wheel (do NOT compile it):
       CIBW_BEFORE_BUILD: "pip install --only-binary :all: -r requirements.txt"
       # There are/were no numpy wheels for these:
