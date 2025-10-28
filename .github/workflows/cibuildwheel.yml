@@ -12,11 +12,11 @@ jobs:
         os: [ubuntu-20.04, windows-2019, macos-13, macos-14]
     env:
       # Seems to have trouble parsing our setup.py, thus:
-      CIBW_PROJECT_REQUIRES_PYTHON: ">=3.9"
+      CIBW_PROJECT_REQUIRES_PYTHON: ">=3.10"
       # Install numpy with a wheel (do NOT compile it):
       CIBW_BEFORE_BUILD: "pip install --only-binary :all: -r requirements.txt"
       # There are/were no numpy wheels for these:
-      CIBW_SKIP: pp37-* pp38-* pp39-* pp310-* cp39-manylinux_i686 cp310-manylinux_i686 cp311-manylinux_i686 cp312-manylinux_i686 *-musllinux_*
+      CIBW_SKIP: pp310-* cp39-manylinux_i686 cp310-manylinux_i686 cp311-manylinux_i686 cp312-manylinux_i686 *-musllinux_*
       # configure cibuildwheel to build native arch & aarch64 too
       CIBW_ARCHS_LINUX: auto aarch64
       # Quick test with C code using NumPy C API:
