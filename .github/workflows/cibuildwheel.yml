@@ -40,7 +40,7 @@ jobs:
           cd biopython
           # Use commit hash if tag is still pending:
           # This should become biopython-186:
-          git checkout 857de750e9e56597d80be52003abe8f004a65c5a
+          git checkout ca57c0fa133b00038ceec137172205e9be4c6886
           cd ..
 
       - name: Build wheels
