@@ -8,8 +8,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        # macos-13 is an intel runner, macos-14 is apple silicon
-        os: [ubuntu-22.04, windows-2022, macos-13, macos-14]
+        # macos-13 was an intel runner, macos-14 is apple silicon
+        os: [ubuntu-22.04, windows-2022, macos-14]
     env:
       # Seems to have trouble parsing our setup.py, thus:
       CIBW_PROJECT_REQUIRES_PYTHON: ">=3.10"
@@ -44,7 +44,7 @@ jobs:
           cd ..
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v3.2.1
+        uses: pypa/cibuildwheel@v3.4.0
         with:
           package-dir: biopython
           output-dir: wheelhouse
