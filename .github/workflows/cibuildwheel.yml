@@ -40,7 +40,7 @@ jobs:
           cd biopython
           # Use commit hash if tag is still pending:
           # Testing prior to version bump and biopython-187 tag:
-          git checkout d76a5581ca3317ec850d72450c458ec4e34e2583
+          git checkout 7a9c76cce8c6a58db791be2b12a135af210cedf2
           cd ..
 
       - name: Build wheels
