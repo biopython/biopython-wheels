@@ -39,8 +39,7 @@ jobs:
           git submodule update --init biopython
           cd biopython
           # Use commit hash if tag is still pending:
-          # This should become biopython-186:
-          git checkout c809938fda0ba0a90696779539173ea8d881ad8f
+          git checkout biopython-188
           cd ..
 
       - name: Build wheels
