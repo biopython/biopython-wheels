@@ -9,14 +9,15 @@ jobs:
     strategy:
       matrix:
         # macos-13 was an intel runner, macos-14 is apple silicon
-        os: [ubuntu-22.04, windows-2022, macos-14]
+        os: [ubuntu-22.04, windows-2022, windows-11-arm, macos-14]
     env:
       # Seems to have trouble parsing our setup.py, thus:
       CIBW_PROJECT_REQUIRES_PYTHON: ">=3.10"
       # Install numpy with a wheel (do NOT compile it):
       CIBW_BEFORE_BUILD: "pip install --only-binary :all: -r requirements.txt"
-      # There are/were no numpy wheels for these:
-      CIBW_SKIP: cp3*-manylinux_i686 *-musllinux_*
+      # There are/were no numpy wheels for these.
+      # Windows ARM64 CPython is only available from 3.11 onwards.
+      CIBW_SKIP: cp3*-manylinux_i686 *-musllinux_* cp310-win_arm64
       # configure cibuildwheel to build native arch & aarch64 too
       CIBW_ARCHS_LINUX: auto aarch64
       # Quick test with C code using NumPy C API:
